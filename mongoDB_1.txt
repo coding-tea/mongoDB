@@ -1,0 +1,2 @@
+use DB1;
+db.createColletction
