@@ -19,7 +19,9 @@ db.products.find({prix : {$gt : 13723}})
 
 //we can also write regex on selection place in find method
 //for example we are going to show the products witch name start with Macbook
-db.products.find({nom: /^products/}) //^ means start with, $ means end with
+db.products.find({nom: /^Macbook/}) //^ means start with, $ means end with
+//or you can use $regex
+db.produits.find({nom: {$regex : "Macbook.*"}})
 
 //update the product Macbook Air
 db.products.update({nom : 'Macbook Air'}, {$set : {prix : 5000}})
