@@ -1,2 +1,31 @@
-use DB1;
-db.createColletction
+use DB1; //create and point in the database
+db.createColletction('DBsport') //DBsport it's my collection 
+db.DBsport.insert([
+    {
+        _id : '1',
+        name : 'football',
+        players_number : '11',
+    },
+    {
+        _id : '2',
+        name : 'basketball',
+        players_number : '7',
+    },
+    {
+        _id : '3',
+        name : 'voleball',
+        players_number : '6',
+    },
+]); //insert data in my collection DBsport
+
+//return all data from the collection 
+db.DBsport.find()
+
+//return data from the collection based on a condition
+db.DBsport.find({name : 'football'})
+
+//return name and id fields from my collection based on a condition
+db.DBsport.find({name : 'football'}, {_id:1, name:1, players_number:0}) // the players_number it's hidden based on this query
+
+//return all the data except football
+db.DBsport.find({name : {$nin:['football']}}, {_id:1, name:1, players_number:0})
