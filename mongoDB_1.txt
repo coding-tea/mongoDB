@@ -1,5 +1,7 @@
 use DB1; //create and point in the database
 db.createColletction('DBsport') //DBsport it's my collection 
+db.DBsport.drop() //drop the collection
+db.DBsport.renameCollection('newName') //rename the collection
 db.DBsport.insert([
     {
         _id : '1',
