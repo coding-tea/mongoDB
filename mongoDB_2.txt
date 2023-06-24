@@ -1,0 +1,31 @@
+use DB1; //create and point in the database
+db.createColletction('DBsport')
+db.DBsport.insert([
+    {
+        _id : '1',
+        name : 'football',
+        players_number : '11',
+    },
+    {
+        _id : '2',
+        name : 'basketball',
+        players_number : '7',
+    },
+    {
+        _id : '3',
+        name : 'voleball',
+        players_number : '6',
+    },
+]);
+
+//sort the data
+db.DBsport.find({}, {name:1, players_number:1}).sort({name : 1}) //1 => asc and -1 => desc
+
+//return fields number 
+db.DBsport.find().count()
+
+//show the first 2 fields
+db.DBsport.find().limit(2)
+
+//distinct the data
+db.DBsport.distinct('name')

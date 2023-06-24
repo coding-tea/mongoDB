@@ -1,0 +1,30 @@
+use product
+
+document1={"nom": "Macbook Pro", "fabriquant": "Apple", "prix": 11435.99, "options": ["Intel Core i5", 
+"Retina Display", "Long life battery"]})
+document2={"nom" : "Macbook Air", "fabriquant" : "Apple", "prix" : 125794.73, "ultrabook" : true, 
+"options" : ["Intel Core i7", "SSD", "Long life battery"]}
+document3={"nom" : "Thinkpad X230", "fabriquant" : "Lenovo", "prix" : 114358.74, "ultrabook": true, 
+options: ["Intel Core i5", "SSD", "Long life battery"]}
+
+//insert this data in a new collection called products
+db.createCollection('products')
+db.products.insert([document1, document2, document3])
+
+//find the product Thinkpad X230
+db.products.find({nom : 'products'})
+
+//show the products with price greater than 13723
+db.products.find({prix : {$gt : 13723}})
+
+//we can also write regex on selection place in find method
+//for example we are going to show the products witch name start with Macbook
+db.products.find({nom: /^Macbook/}) //^ means start with, $ means end with
+//or you can use $regex
+db.produits.find({nom: {$regex : "Macbook.*"}})
+
+//update the product Macbook Air
+db.products.update({nom : 'Macbook Air'}, {$set : {prix : 5000}})
+
+//delete products witch have apple fabricant
+db.products.deleteMany({fabricant : 'apple'})
